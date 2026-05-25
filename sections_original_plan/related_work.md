@@ -1,0 +1,37 @@
+# Related Work
+
+## Image Demoiréing
+
+Image demoiréing aims to remove moiré patterns — frequency aliasing artifacts caused by the interference between camera sensor grids and screen pixel arrays. Early deep learning approaches tackled this with multi-scale convolutional architectures. Sun et al. [@sun2018moire] pioneered the field with a multi-resolution CNN trained on the TIP2018 dataset. Recognizing that moiré is fundamentally a frequency-domain phenomenon, subsequent methods shifted toward explicit frequency decomposition. Zheng et al. [@zheng2022learning] proposed learnable DCT-based bandpass filters (MBCNN) to extract frequency priors, winning the AIM 2019 demoiréing challenge. Liu et al. [@liu2020wavelet] introduced wavelet-domain dual-branch processing (WDNet) to separate moiré frequencies from image content. He et al. [@he2020fhde2net] designed a frequency disentangling network (FHDe2Net) with a dedicated DCT branch for full-HD images.
+
+Beyond wavelet-domain methods, MoiréNet [@anonymous2025moirenet] recently achieved state-of-the-art results with a compact dual-domain CNN (5.5M parameters) featuring directional frequency-spatial encoding. However, these methods all rely on **fixed** frequency decomposition strategies (DWT, DCT, or learned but static filters) that cannot adapt to the diverse frequency characteristics of moiré patterns across different capture devices and screen types. This rigidity fundamentally limits their cross-domain generalization.
+
+## High-Resolution and Efficient Demoiréing
+
+As smartphone cameras routinely capture 4K+ images, efficient high-resolution demoiréing has gained attention. Yu et al. [@yu2022towards] proposed ESDNet with scale-aware modules and the UHDM 4K dataset. Xiao et al. [@xiao2024pbic] exploited the green channel's relative immunity to moiré for patch-level detail transfer (P-BiC). MFFNet [@anonymous2025mffnet] introduced the first joint demoiréing and super-resolution framework. DDA [@anonymous2023dda] targeted real-time mobile deployment. While these methods achieve impressive efficiency-accuracy trade-offs, they are all trained and evaluated within a single data distribution and offer no mechanism to adapt when deployed on unseen device-screen combinations.
+
+## RAW-Domain and Multi-Domain Demoiréing
+
+Since moiré originates in the camera's RAW capture before ISP processing, several recent works exploit RAW-domain information. Xu et al. [@xu2024image] proposed RRID (ECCV 2024), jointly utilizing RAW and sRGB data through a Spatial-Channel Demoiréing Module. Li et al. [@li2025moirexnet] extended RAW-domain processing to multi-frame inputs with MoiréXNet, which incorporates linear attention Test-Time Training (TTT) layers that update during inference and a Truncated Flow Matching Prior for detail recovery. DemMamba [@xu2024demmamba] applied state space models (Mamba) for alignment-free RAW video demoiréing. Despite the demonstrated value of RAW information, these methods either require RAW capture at inference time — unavailable on most consumer devices — or, in the case of MoiréXNet, bind the TTT mechanism to specific architectural components (linear attention layers), preventing application to other backbone architectures.
+
+## Video Demoiréing
+
+Video demoiréing adds the challenge of temporal consistency. Xu et al. [@xu2024direction] proposed DTNet (AAAI 2024) with direction-aware DCT detection and temporal-guided bilateral learning. FPANet [@anonymous2025fpanet] operates in the frequency domain with frame-level post-alignment. While these methods achieve strong temporal coherence, they rely on optical flow or deformable convolutions for alignment, adding computational overhead and remaining vulnerable to large motions.
+
+## Data-Centric and Universal Demoiréing
+
+Addressing the severe data scarcity in demoiréing, several works focus on data generation and unpaired learning. Yang et al. [@yang2025unidemoire] collected 150K real moiré patterns and used diffusion models to synthesize diverse moiré images, proposing the first "universal demoiréing" framework (UniDemoiré, AAAI 2025). UnDeM [@anonymous2024undem] learned from unpaired real data. SIDME [@anonymous2025sidme] explored self-supervised masked reconstruction. These data-centric approaches broaden the training distribution but remain fundamentally limited by the coverage of the collected/generated data — truly unseen domains still cause performance degradation.
+
+## Test-Time Adaptation for Image Restoration
+
+Test-time adaptation (TTA) has emerged as a promising paradigm for handling distribution shifts in image restoration without requiring target-domain training data. Tang et al. [@tang2026degradation] proposed DCTTA (CVPR 2026), using a diffusion-based re-degradation generator to create pseudo training pairs and selective parameter updates for all-in-one restoration. Gou et al. [@gou2024testtime] introduced TAO (ICML 2024 Spotlight), adapting a degradation-agnostic diffusion model to unknown degradations at test time. TTT-MIM [@mansour2024tttmim] leveraged masked image modeling as a self-supervised proxy task for denoising distribution shifts. TTPO [@li2026testtime] borrowed preference optimization from LLM alignment for test-time refinement. Deng et al. [@deng2023efficient] tackled blind super-resolution with second-order degradation modeling and feature-level reconstruction.
+
+Despite this rapid progress, existing TTA methods for image restoration share two critical limitations in the context of demoiréing. First, they are designed for generic degradations (noise, blur, rain) and lack moiré-specific adaptation signals — moiré patterns differ fundamentally from these degradations in being frequency-aliasing artifacts rather than additive or convolutional corruptions. Second, most methods either update the full model or require architecture-specific modifications, lacking a model-agnostic adapter that can be plugged into arbitrary pre-trained demoiréing backbones.
+
+## Parameter-Efficient Adaptation
+
+Concurrently, parameter-efficient fine-tuning (PEFT) techniques have been adapted from NLP to image restoration. FraIR [@anonymous2026frair] introduced Fourier-domain low-rank adapters with <0.5% trainable parameters. BIR-Adapter [@anonymous2025biradapter] leveraged frozen diffusion model features through lightweight attention adapters. Edit2Restore [@anonymous2026edit2restore] applied LoRA to the FLUX.1 (12B) model for few-shot restoration. DDOM [@anonymous2026ddom] proposed degradation-oriented adapters (0.36%-0.63% parameters) for universal restoration. These works demonstrate that lightweight adapters can effectively transfer knowledge to new tasks, but none explore the combination of adapter-based PEFT with test-time adaptation for cross-domain generalization — a gap our work directly addresses.
+
+---
+
+In summary, existing demoiréing methods suffer from severe domain overfitting; TTA methods lack moiré-specific designs and model-agnostic adapters; and PEFT approaches have not been applied to the cross-domain demoiréing problem. Our work, **MoTA (Moiré Test-Time Adaptation)**, bridges these gaps by proposing the first model-agnostic test-time adaptation framework for image demoiréing, featuring a Moiré-Aware Self-Supervision (MASS) signal and lightweight plug-in adapters that enable any pre-trained demoiréing backbone to adapt to unseen domains at inference time.

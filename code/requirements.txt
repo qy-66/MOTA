@@ -1,0 +1,15 @@
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.24.0
+Pillow>=9.0.0
+scikit-image>=0.21.0
+lpips>=0.1.4
+piq>=0.8.0
+opencv-python>=4.8.0
+tensorboard>=2.13.0
+tqdm>=4.65.0
+
+# === 外部仓库依赖 (需手动 clone 到 /root/autodl-tmp/) ===
+# WDNet:    /root/autodl-tmp/WDNet_demoire-master/
+#            + wavelet_weights_c2.pkl (来自 WaveletSRNet)
+# DDA:      /root/autodl-tmp/DDA-main/ (已修改 dataset.py / train.py / test.py)

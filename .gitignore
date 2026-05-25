@@ -1,0 +1,37 @@
+# LaTeX build artifacts
+output/*.aux
+output/*.bbl
+output/*.blg
+output/*.log
+output/*.out
+output/*.synctex*
+output/*.fls
+output/*.fdb_latexmk
+output/*.xdv
+output/paper_cvpr_backup.tex
+output/paper_nocvpr.tex
+output/abstract.*
+output/page9.png
+output/_tmp*/
+
+# Checkpoints (large files)
+code/checkpoints/
+checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Data (large)
+data/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE
+.vscode/
+.idea/

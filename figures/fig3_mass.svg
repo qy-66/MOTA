@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 732 520" width="732" height="520" font-family="Arial,Helvetica,sans-serif">
+  <rect width="732" height="520" fill="white"/>
+
+  <!-- Title -->
+  <text x="366" y="16" text-anchor="middle" font-size="8" font-weight="bold" fill="#202124">Figure 3: MASS Signal Visualization</text>
+
+  <!-- ====== Panel (a): Input + MFD overlay ====== -->
+  <text x="12" y="38" font-size="7" font-weight="bold" fill="#202124">a</text>
+  <text x="12" y="118" text-anchor="middle" font-size="7" font-weight="bold" fill="#202124">Input Image I</text>
+  <rect x="12" y="45" width="140" height="140" rx="3" fill="#F1F3F4" stroke="#9AA0A6" stroke-width="0.8"/>
+  <text x="82" y="118" text-anchor="middle" font-size="6.5" fill="#9AA0A6">[Moiré input]</text>
+
+  <text x="162" y="38" font-size="7" font-weight="bold" fill="#202124">b</text>
+  <text x="162" y="118" text-anchor="middle" font-size="7" font-weight="bold" fill="#202124">MFD Probability Map</text>
+  <rect x="162" y="45" width="140" height="140" rx="3" fill="#FCE4EC" stroke="#C62828" stroke-width="0.8"/>
+  <!-- Fake heatmap grid -->
+  <g opacity="0.3">
+    <rect x="170" y="55" width="20" height="20" fill="#FFF176"/>
+    <rect x="192" y="55" width="20" height="20" fill="#FFB300"/>
+    <rect x="214" y="55" width="20" height="20" fill="#FF8F00"/>
+    <rect x="236" y="55" width="20" height="20" fill="#FF6D00"/>
+    <rect x="170" y="77" width="20" height="20" fill="#FFB300"/>
+    <rect x="192" y="77" width="20" height="20" fill="#E65100"/>
+    <rect x="214" y="77" width="20" height="20" fill="#BF360C"/>
+    <rect x="236" y="77" width="20" height="20" fill="#E65100"/>
+    <rect x="170" y="99" width="20" height="20" fill="#FFF176"/>
+    <rect x="192" y="99" width="20" height="20" fill="#FFB300"/>
+    <rect x="214" y="99" width="20" height="20" fill="#FF8F00"/>
+    <rect x="236" y="99" width="20" height="20" fill="#FF6D00"/>
+  </g>
+  <text x="232" y="175" text-anchor="middle" font-size="6" fill="#C62828">High moiré probability</text>
+  <text x="232" y="185" text-anchor="middle" font-size="5.5" fill="#5F6368">M ∈ [0,1], bright = moiré-dominant</text>
+
+  <!-- Color bar -->
+  <rect x="260" y="55" width="8" height="100" rx="1" fill="url(#mfd-cmap)"/>
+  <defs>
+    <linearGradient id="mfd-cmap" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#FFF176"/>
+      <stop offset="33%" stop-color="#FFB300"/>
+      <stop offset="66%" stop-color="#E65100"/>
+      <stop offset="100%" stop-color="#BF360C"/>
+    </linearGradient>
+  </defs>
+  <text x="272" y="60" font-size="5.5" fill="#5F6368">1.0</text>
+  <text x="272" y="110" font-size="5.5" fill="#5F6368">0.5</text>
+  <text x="272" y="155" font-size="5.5" fill="#5F6368">0.0</text>
+
+  <!-- ====== Panel (c): DWT Subband Grid ====== -->
+  <text x="320" y="38" font-size="7" font-weight="bold" fill="#202124">c</text>
+  <text x="526" y="38" text-anchor="middle" font-size="7" font-weight="bold" fill="#202124">DWT Subband Decomposition (Before MASS)</text>
+
+  <!-- LL -->
+  <rect x="320" y="48" width="90" height="62" rx="2" fill="#E8F0FE" stroke="#1A73E8" stroke-width="0.6"/>
+  <text x="365" y="63" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#1A73E8">LL (Low-freq)</text>
+  <rect x="328" y="68" width="74" height="36" rx="2" fill="#F5F5F5" stroke="#DDD" stroke-width="0.4"/>
+  <text x="365" y="89" text-anchor="middle" font-size="5.5" fill="#5F6368">Content preserved</text>
+
+  <!-- LH -->
+  <rect x="418" y="48" width="90" height="62" rx="2" fill="#FFF3E0" stroke="#E65100" stroke-width="0.6"/>
+  <text x="463" y="63" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#E65100">LH (Horizontal)</text>
+  <rect x="426" y="68" width="74" height="36" rx="2" fill="#F5F5F5" stroke="#DDD" stroke-width="0.4"/>
+  <text x="463" y="87" text-anchor="middle" font-size="5.5" fill="#E65100">Moiré energy</text>
+  <text x="463" y="97" text-anchor="middle" font-size="5.5" fill="#E65100">→ attenuated</text>
+
+  <!-- HL -->
+  <rect x="516" y="48" width="90" height="62" rx="2" fill="#FFF3E0" stroke="#E65100" stroke-width="0.6"/>
+  <text x="561" y="63" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#E65100">HL (Vertical)</text>
+  <rect x="524" y="68" width="74" height="36" rx="2" fill="#F5F5F5" stroke="#DDD" stroke-width="0.4"/>
+  <text x="561" y="87" text-anchor="middle" font-size="5.5" fill="#E65100">Moiré energy</text>
+  <text x="561" y="97" text-anchor="middle" font-size="5.5" fill="#E65100">→ attenuated</text>
+
+  <!-- HH -->
+  <rect x="614" y="48" width="90" height="62" rx="2" fill="#E8F0FE" stroke="#1A73E8" stroke-width="0.6"/>
+  <text x="659" y="63" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#1A73E8">HH (Diag)</text>
+  <rect x="622" y="68" width="74" height="36" rx="2" fill="#F5F5F5" stroke="#DDD" stroke-width="0.4"/>
+  <text x="659" y="89" text-anchor="middle" font-size="5.5" fill="#5F6368">Texture preserved</text>
+
+  <!-- After MASS row -->
+  <text x="320" y="130" font-size="7" font-weight="bold" fill="#202124">d</text>
+  <text x="526" y="130" text-anchor="middle" font-size="7" font-weight="bold" fill="#202124">DWT Subband Decomposition (After MASS, α = 0.5)</text>
+
+  <!-- LL' -->
+  <rect x="320" y="140" width="90" height="62" rx="2" fill="#E8F0FE" stroke="#1A73E8" stroke-width="0.6"/>
+  <text x="365" y="155" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#1A73E8">LL' = LL</text>
+  <rect x="328" y="160" width="74" height="36" rx="2" fill="#F5F5F5" stroke="#DDD" stroke-width="0.4"/>
+  <text x="365" y="181" text-anchor="middle" font-size="5.5" fill="#5F6368">Unchanged</text>
+
+  <!-- LH' -->
+  <rect x="418" y="140" width="90" height="62" rx="2" fill="#E8F5E9" stroke="#34A853" stroke-width="0.6"/>
+  <text x="463" y="155" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#34A853">LH' = LH⊙(1-αM)</text>
+  <rect x="426" y="160" width="74" height="36" rx="2" fill="#F5F5F5" stroke="#DDD" stroke-width="0.4"/>
+  <text x="463" y="181" text-anchor="middle" font-size="5.5" fill="#34A853">Attenuated ✓</text>
+
+  <!-- HL' -->
+  <rect x="516" y="140" width="90" height="62" rx="2" fill="#E8F5E9" stroke="#34A853" stroke-width="0.6"/>
+  <text x="561" y="155" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#34A853">HL' = HL⊙(1-αM)</text>
+  <rect x="524" y="160" width="74" height="36" rx="2" fill="#F5F5F5" stroke="#DDD" stroke-width="0.4"/>
+  <text x="561" y="181" text-anchor="middle" font-size="5.5" fill="#34A853">Attenuated ✓</text>
+
+  <!-- HH' -->
+  <rect x="614" y="140" width="90" height="62" rx="2" fill="#E8F0FE" stroke="#1A73E8" stroke-width="0.6"/>
+  <text x="659" y="155" text-anchor="middle" font-size="6.5" font-weight="bold" fill="#1A73E8">HH' = HH</text>
+  <rect x="622" y="160" width="74" height="36" rx="2" fill="#F5F5F5" stroke="#DDD" stroke-width="0.4"/>
+  <text x="659" y="181" text-anchor="middle" font-size="5.5" fill="#5F6368">Unchanged</text>
+
+  <!-- ====== Panel (e): Reconstruction ====== -->
+  <text x="12" y="225" font-size="7" font-weight="bold" fill="#202124">e</text>
+
+  <!-- Attenuation formula -->
+  <rect x="12" y="233" width="290" height="50" rx="3" fill="#F8F9FA" stroke="#DADCE0" stroke-width="0.5"/>
+  <text x="22" y="250" font-size="6.5" font-weight="bold" fill="#202124">MASS Frequency-Selective Attenuation:</text>
+  <text x="22" y="264" font-size="6.5" fill="#202124">Ĩ = IDWT( LL, LH⊙(1−α·M), HL⊙(1−α·M), HH )</text>
+  <text x="22" y="278" font-size="6" fill="#5F6368">α = 0.5 (fixed) | M = MFD(I) | DWT = Haar wavelet | IDWT = inverse Haar</text>
+
+  <!-- Reconstructed output -->
+  <text x="330" y="225" font-size="7" font-weight="bold" fill="#202124">f</text>
+  <text x="374" y="250" text-anchor="middle" font-size="7" font-weight="bold" fill="#202124">Reconstructed Pseudo-Clean Ĩ</text>
+  <rect x="330" y="258" width="88" height="70" rx="3" fill="#E8F5E9" stroke="#34A853" stroke-width="0.8"/>
+  <text x="374" y="296" text-anchor="middle" font-size="6.5" fill="#34A853">Pseudo-clean</text>
+
+  <!-- ====== Panel (g): Frequency analysis ====== -->
+  <text x="450" y="225" font-size="7" font-weight="bold" fill="#202124">g</text>
+  <text x="545" y="225" text-anchor="middle" font-size="7" font-weight="bold" fill="#202124">Frequency Energy Distribution</text>
+
+  <!-- Bar chart sketch -->
+  <rect x="450" y="235" width="270" height="100" rx="3" fill="white" stroke="#DADCE0" stroke-width="0.5"/>
+  <!-- LL bar -->
+  <rect x="470" y="285" width="30" height="40" rx="1" fill="#1A73E8" opacity="0.7"/>
+  <text x="485" y="282" text-anchor="middle" font-size="5.5" fill="#202124">LL</text>
+  <!-- LH bar (before) -->
+  <rect x="510" y="255" width="30" height="70" rx="1" fill="#E65100" opacity="0.7"/>
+  <text x="525" y="252" text-anchor="middle" font-size="5.5" fill="#202124">LH</text>
+  <!-- LH bar (after) -->
+  <rect x="520" y="285" width="15" height="40" rx="1" fill="#34A853" opacity="0.9"/>
+  <!-- HL bar -->
+  <rect x="560" y="260" width="30" height="65" rx="1" fill="#E65100" opacity="0.7"/>
+  <text x="575" y="257" text-anchor="middle" font-size="5.5" fill="#202124">HL</text>
+  <rect x="570" y="285" width="15" height="40" rx="1" fill="#34A853" opacity="0.9"/>
+  <!-- HH bar -->
+  <rect x="610" y="300" width="30" height="25" rx="1" fill="#1A73E8" opacity="0.7"/>
+  <text x="625" y="297" text-anchor="middle" font-size="5.5" fill="#202124">HH</text>
+
+  <!-- Legend -->
+  <rect x="470" y="240" width="10" height="8" fill="#E65100" opacity="0.7"/>
+  <text x="484" y="248" font-size="5.5" fill="#5F6368">Before MASS</text>
+  <rect x="550" y="240" width="10" height="8" fill="#34A853" opacity="0.9"/>
+  <text x="564" y="248" font-size="5.5" fill="#5F6368">After MASS (α=0.5)</text>
+
+  <!-- ====== Bottom explanation ====== -->
+  <text x="12" y="370" font-size="6.5" fill="#5F6368">Panel a: Input moiré image. Panel b: MFD probability map M (brighter = higher moiré probability in LH/HL bands).</text>
+  <text x="12" y="385" font-size="6.5" fill="#5F6368">Panel c: DWT decomposition before MASS — LH and HL subbands contain visible moiré energy. Panel d: After MASS — LH and HL selectively attenuated by factor (1−αM).</text>
+  <text x="12" y="400" font-size="6.5" fill="#5F6368">Panel e: MASS formula — only mid-frequency bands modified. Panel f: Reconstructed pseudo-clean image (supervision target for TTA). Panel g: Frequency energy before/after.</text>
+
+  <!-- Key insight box -->
+  <rect x="12" y="415" width="708" height="40" rx="4" fill="#E8F0FE" stroke="#1A73E8" stroke-width="0.5"/>
+  <text x="366" y="433" text-anchor="middle" font-size="6.5" fill="#1A73E8">Key insight: Moiré energy concentrates in mid-frequency subbands (LH, HL). MASS attenuates only these bands, preserving image content (LL) and fine texture (HH).</text>
+  <text x="366" y="448" text-anchor="middle" font-size="6" fill="#5F6368">This provides a pseudo-clean target for TTA optimization without requiring paired data, external hardware, or multi-frame capture.</text>
+</svg>
