@@ -42,3 +42,14 @@ experiment_guide.md
 output/cvpr.sty
 output/pagenumbers.sty
 sections_original_plan/
+
+# Internal project files (not for public repo)
+CLAUDE.md
+PAPER_SPEC.md
+research_state.json
+
+# Source files (keep private)
+output/paper.tex
+output/review_output.md
+output/t_sensitivity.csv
+output/figures/
