@@ -35,3 +35,10 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Additional exclusions
+output/paper_nocvpr*
+experiment_guide.md
+output/cvpr.sty
+output/pagenumbers.sty
+sections_original_plan/
